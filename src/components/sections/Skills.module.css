@@ -1,0 +1,16 @@
+.skills { background: var(--bg); border-top: 1px solid var(--border); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.card:hover { border-color: rgba(79,70,229,.35); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.categoryHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.category { font-size: 1rem; color: var(--text); letter-spacing: -.02em; }
+.count, .learningBadge { font: 600 .66rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--text-subtle); }
+.learningBadge { color: #047857; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 999px; padding: 5px 8px; }
+.description { color: var(--text-muted); font-size: .78rem; line-height: 1.55; margin: 8px 0 18px; min-height: 38px; }
+.iconGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 10px; }
+.skillIcon { height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-raised); cursor: help; transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease; }
+.skillIcon:hover { transform: translateY(-3px); border-color: rgba(79,70,229,.45); background: #fff; box-shadow: 0 7px 14px rgba(79,70,229,.13); }
+.iconImage { width: 28px; height: 28px; object-fit: contain; }
+.iconMark, .iconFallback { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font: 700 .65rem var(--font-mono); }
+.openai { color: #047857; background: #ecfdf5; }.n8n { color: #e11d48; background: #fff1f2; }.webhook { color: #4f46e5; background: #eef2ff; font-size: 1.25rem; }.iconFallback { color: var(--text-muted); background: #e2e8f0; }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; gap: 16px; } .card { padding: 20px; } .iconGrid { grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); } }
