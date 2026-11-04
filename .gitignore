@@ -1,13 +1,7 @@
-# Dependencies and generated output
-node_modules/
-dist/
+node_modules
+.next
+out
 *.tsbuildinfo
-
-# Local environment files
-.env
-.env.*
-!.env.example
-
-# Editor and OS files
+next-env.d.ts
+.env*.local
 .DS_Store
-Thumbs.db
