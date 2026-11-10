@@ -1,0 +1,97 @@
+/*
+ * Global styles.
+ * Most styling lives in Tailwind classes inside components. This file only holds
+ * the few effects that are easier to express as plain CSS (background patterns,
+ * pseudo-elements) plus the reduced-motion safety net.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+  ::selection {
+    @apply bg-lime text-ink;
+  }
+}
+
+@layer components {
+  /* 48px engineering grid used behind the hero and contact sections */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgb(11 13 14 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(11 13 14 / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Same grid in white, for dark sections */
+  .grid-bg-light {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Dot pattern used inside the mock browser previews */
+  .dots-bg {
+    background-image: radial-gradient(rgb(11 13 14 / 0.18) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  /* A soft blue band that sweeps top → bottom over its (relative) parent */
+  .scan-line::after {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 animate-scan;
+    height: 120px;
+    top: -120px;
+    background: linear-gradient(to bottom, transparent, rgb(43 75 255 / 0.08), transparent);
+  }
+
+  /* Blinking terminal caret */
+  .caret::after {
+    content: "▍";
+    @apply ml-0.5 animate-blink text-volt;
+  }
+
+  /* Skeleton "loading" shimmer */
+  .shimmer {
+    @apply animate-shimmer;
+    background: linear-gradient(90deg, rgb(11 13 14 / 0.07) 0%, rgb(11 13 14 / 0.14) 50%, rgb(11 13 14 / 0.07) 100%);
+    background-size: 200% 100%;
+  }
+
+  /* Corner brackets that grow on hover (used on project cards) */
+  .brackets {
+    position: relative;
+  }
+  .brackets::before,
+  .brackets::after {
+    content: "";
+    @apply absolute h-3.5 w-3.5 border-volt opacity-0 transition-all duration-300;
+  }
+  .brackets::before {
+    @apply -left-px -top-px border-l-2 border-t-2;
+  }
+  .brackets::after {
+    @apply -bottom-px -right-px border-b-2 border-r-2;
+  }
+  .brackets:hover::before,
+  .brackets:hover::after {
+    @apply h-7 w-7 opacity-100;
+  }
+}
+
+/* Respect users who ask the OS for less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
